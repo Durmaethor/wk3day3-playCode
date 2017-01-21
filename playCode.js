@@ -156,6 +156,10 @@ function addLine(arr, multiplicant, multiplier, product) {
 }
 
 
-var table = fillArray('string');
+var table = fillArray('array');
 console.log(table);
 
+
+/* ---------------------------------------------------------------------------
+        SEPARATE THE ARRAYS BY LINES OF BLOCK SPLIT BY 3 ENTERS
+---------------------------------------------------------------------------- */
