@@ -75,21 +75,87 @@ displayTable(7, 3, 7); //call the function with 3 parameters to get the desired 
 //each element has a multiplicant, a multiplier, and a product
 //the returned array elements are ordered by multiplicant, then by multiplier, then product
 
-function multiply(multiplicant, multiplier) {
+//create the array
+
+function fillArray() { //create the fuction to fill the array
+    var arr = []; //create the array in the function
+
+    for(var multiplicant = 1; multiplicant <= 5; multiplicant++) { //create a for loop to run the multiplicant a number of times (dynamic)
+    
+        for(var multiplier = 1; multiplier <= 12; multiplier++) { //create a for loop to run the multiplier a number of times (dynamic)
+            var product = getProduct(multiplicant, multiplier); //create a variable to house the product function
+            var line = buildLine(multiplicant, multiply, product); //create a variable to house the buildLine function
+            arr.push(line);
+        }
+    }
+
+    return arr;
+}
+
+function buildLine(multiplicant, multiply, product) {
+    return [multiplicant, multiplier, product];
+}
+
+function getProduct(multiplicant, multiplier) {
     return multiplicant * multiplier;
 }
 
-function buildArray() {
-    var table = [];
-    table.push(loopMultiplicant, loopMultiplier, product);
-}
+var table = fillArray();
+console.log(table);
 
-function loopMultiplicant(min, max) {
-    values = [];
-    for(var i = min; i <= max; i++){
-        values.push(min, max);
+/* --------------------------------------------------------------
+    WITH EXTRAS!!!
+-------------------------------------------------------------- */
+
+var example = [
+  [ 1, 1, 1 ],
+  [ 1, 2, 2 ],
+  [ 5, 12, 60]
+];
+
+
+function fillArray(format) {
+  var arr = [];
+  for(var multiplicant = 1; multiplicant <= 5; multiplicant += 1) {
+  
+    for(var multiplier = 1; multiplier <= 12; multiplier += 1) {
+      var product = getProduct(multiplicant, multiplier);
+      var line = buildLine(multiplicant, multiplier, product, format);
+      arr.push(line);
     }
+    
+  }
+  
+  return arr;
+}
+
+function buildLine(multiplicant, multiplier, product, format) {
+  if (format === 'string') {
+    return multiplicant + ' x ' + multiplier + ' = ' + product;
+  } else if (format === 'array') {
+    return [multiplicant, multiplier, product];
+  } else {
+    return 'format not specified';
+  }
+}
+
+function getProduct(multiplicant, multiplier) {
+  return multiplicant * multiplier;
+}
+
+// one loop for the multiplicant (1 - 5)
+// one loop for the multiplier (1 - 12)
+// returns an array where each element is an array
+// each element has a multiplicant, a multiplier and a product
+// the returned array elements are ordered by multiplicant, then 
+// by multiplier
+
+
+function addLine(arr, multiplicant, multiplier, product) {
+  arr.push([multiplicant, multiplier, product]);
 }
 
 
+var table = fillArray('string');
+console.log(table);
 
